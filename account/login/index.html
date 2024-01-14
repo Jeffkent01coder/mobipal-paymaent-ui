@@ -1,0 +1,136 @@
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>A Simple and Safer Way to Pay and Get Paid | Mobipal</title>
+  <meta name="description"
+      content="Mobipal is the faster, safer way to send money, make an online payment, receive money or set up a merchant account.">
+  <meta charset="utf-8">
+  <link rel="shortcut icon" sizes="196x196" style="border-radius: 50%;" href="../../static/images/famonipal.png">
+  <link rel="shortcut icon" type="image/x-icon" href="../../static/images/famonipal.png">
+  <link rel="icon" type="image/x-icon" href="../../static/images/famonipal.png">
+  <link  rel="stylesheet" href="../../static/css/wesm.css">
+  <link rel="stylesheet" href="../../static/css/fa.css">
+</head>
+
+<body class="forms">
+  <section class="form_cont">
+    <div class="form_sub_cont">
+      <div class="header_log_flex">
+        <h4>SIGN UP</h4>
+        <div class="status_bar">
+          <div class="bar_cont"></div>
+        </div>
+      </div>
+      <div class="form_content">
+        <form action="index.html" id="loginForm" autocomplete="off">
+          <div class="form_sub_content">
+            <p>E-mail</p>
+            <div class="form_input_flex">
+              <input type="text" id="email" placeholder="email" />
+              <div class="icon_end">
+                <span class="tt"> | </span>
+                <i class="fa-solid fa-user"></i>
+              </div>
+            </div>
+            <div class="errortextemail" style="color: red; font-style: italic"></div>
+          </div>
+
+          <div class="form_sub_content">
+            <p>PASSWORD</p>
+            <div class="form_input_flex">
+              <input type="password" id="password" placeholder="Password" />
+              <div class="icon_end">
+                <span class="tt"> | </span>
+                <i class="fa-solid fa-eye" id="eyeIcon"></i>
+              </div>
+            </div>
+            <div class="errortextpwd" style="color: red; font-style: italic"></div>
+          </div>
+          <div class="remember_me">
+            <input type="checkbox" />
+            <p>REMEMBER ME</p>
+          </div>
+          <button type="submit">LOGIN</button>
+        </form>
+        <div class="end_links_flex">
+          <a href="../register/details/index.html">Signup</a> |
+          <a href="https://paxful.ewisepay.com/offer/Ew01D1223r/">Signup With Paxful</a> |
+          <a href="https://noones.ewisepay.com/offer/E2nnQ73Or1/" style="color: #90ee90" target="_blank">Signup With Noones</a> |
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script src="https://emobipal.com/static/js/all.js"></script>
+  <script src="../../static/js/jquery.js"></script>
+  <script>
+    $(document).ready(function () {
+      $("#eyeIcon").on("click", function () {
+        const passwordInput = $("#password");
+        const passwordFieldType = passwordInput.attr("type");
+
+        if (passwordFieldType === "password") {
+          passwordInput.attr("type", "text");
+        } else {
+          passwordInput.attr("type", "password");
+        }
+      });
+
+      $("#loginForm").on("submit", function (event) {
+        const errortextemail = document.querySelector(
+          ".form_content .errortextemail"
+        );
+        const errortextpwd = document.querySelector(
+          ".form_content .errortextpwd"
+        );
+
+        event.preventDefault();
+
+        const email = $("#email").val();
+        const password = $("#password").val();
+
+        // Encrypt the password using MD5
+
+        $.ajax({
+          url: "./config.php",
+          method: "POST",
+          data: {
+            email: email,
+            password: password,
+          },
+          success: function (response) {
+            if (response === "success") {
+              window.location.href = "../../myaccount";
+              console.log(response);
+            } else {
+              console.log(response);
+              if (response === "emptyall") {
+                errortextemail.textContent = "E-mail Required!";
+                errortextpwd.textContent = "Password is Required!";
+                errortextemail.style.display = "block";
+                errortextpwd.style.display = "block";
+              } else if (response === "emptyemail") {
+                errortextemail.textContent = "E-mail Required!";
+                errortextemail.style.display = "block";
+              } else if (response === "validemail") {
+                errortextemail.textContent = "Enter A Valid E-mail!";
+                errortextemail.style.display = "block";
+              } else if (response === "emptypwd") {
+                errortextpwd.textContent = "Password is Required!";
+                errortextpwd.style.display = "block";
+              } else if (response === "Incorrecturpwd") {
+                errortextemail.textContent = "Invalid Username Or Password!";
+                errortextpwd.textContent = "Invalid Username Or Password!";
+                errortextemail.style.display = "block";
+                errortextpwd.style.display = "block";
+              }
+            }
+          },
+        });
+      });
+    });
+  </script>
+</body>
+
+</html>

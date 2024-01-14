@@ -1,0 +1,810 @@
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>A Simple and Safer Way to Pay and Get Paid | Mobipal</title>
+    <meta name="description"
+        content="Mobipal is the faster, safer way to send money, make an online payment, receive money or set up a merchant account.">
+    <meta charset="utf-8">
+    <link rel="shortcut icon" sizes="196x196" style="border-radius: 50%;" href="static/images/famonipal.png">
+    <link rel="shortcut icon" type="image/x-icon" href="static/images/famonipal.png">
+    <link rel="icon" type="image/x-icon" href="static/images/famonipal.png">
+
+    <link href="static/css/style.css" media="screen" rel="stylesheet" type="text/css">
+    <style>
+        html[data-device-type="dedicated"] .product-hero:before,
+        html[data-device-type="portable"] .product-hero:before {
+            content: "";
+            width: 0;
+            height: 0;
+            border-style: solid;
+            position: fixed;
+            border-width: calc(450px * .67) calc(450px * .072) 0 0;
+            border-color: transparent transparent transparent transparent;
+            top: 0%;
+            left: 0%;
+            z-index: -1
+        }
+
+        html[data-device-type="dedicated"] .product-hero:after,
+        html[data-device-type="portable"] .product-hero:after {
+            content: "";
+            width: 0;
+            height: 0;
+            border-style: solid;
+            position: fixed;
+            border-width: 0 0 calc(450px * .67) calc(450px * .072);
+            border-color: transparent transparent #ff9600 transparent;
+            bottom: 0%;
+            right: 0%;
+            z-index: -1
+        }
+
+        html[data-device-type="mobile"] .product-hero:before {
+            content: "";
+            width: 0;
+            height: 0;
+            border-style: solid;
+            position: fixed;
+            border-width: calc(230px * .5) calc(230px * .04) 0 0;
+            border-color: transparent transparent transparent transparent;
+            top: 0%;
+            left: 0%;
+            z-index: -1
+        }
+
+        html[data-device-type="mobile"] .product-hero:after {
+            content: "";
+            width: 0;
+            height: 0;
+            border-style: solid;
+            position: fixed;
+            border-width: 0 0 calc(230px * .5) calc(230px * .04);
+            border-color: transparent transparent #ff9600 transparent;
+            bottom: 0%;
+            right: 0%;
+            z-index: -1
+        }
+
+        html[data-device-type="mobile"] .product-hero.no-img:before,
+        html[data-device-type="mobile"] .product-hero.no-img:after {
+            content: none
+        }
+
+        html[data-device-type="dedicated"] .product-hero:after,
+        html[data-device-type="mobile"] .product-hero:after,
+        html[data-device-type="portable"] .product-hero:after,
+        html[data-device-type="dedicated"] .product-hero:before,
+        html[data-device-type="mobile"] .product-hero:before,
+        html[data-device-type="portable"] .product-hero:before {
+            z-index: 1;
+            position: absolute
+        }
+
+        html[data-device-type="dedicated"] .product-hero:after,
+        html[data-device-type="mobile"] .product-hero:after,
+        html[data-device-type="portable"] .product-hero:after {
+            border-width: 0 0 calc(450px * .5) calc(450px * .05)
+        }
+
+        html[data-device-type="dedicated"] .product-hero:before,
+        html[data-device-type="mobile"] .product-hero:before,
+        html[data-device-type="portable"] .product-hero:before {
+            border-width: calc(450px * .5) calc(450px * .05) 0 0
+        }
+
+        .product-hero .product-hero__container {
+            float: none;
+            margin: 0 auto;
+            text-align: center
+        }
+
+        .product-hero .product-hero__container .pypl-btn,
+        .product-hero .product-hero__container .product-hero__hatch-text {
+            margin: 0 auto
+        }
+
+        @media (max-width:1022px) {
+            .notification-tickleBar {
+                padding-top: 20px
+            }
+        }
+
+        .two-panel-color {
+            padding: 0 0;
+            overflow: hidden
+        }
+
+        @media (min-width:1024px) {
+            .two-panel-color {
+                padding: 0 0
+            }
+        }
+
+        .two-panel-color .container {
+            margin-left: auto;
+            margin-right: auto;
+            padding: 0
+        }
+
+        @media (min-width:576px) {
+            .two-panel-color .container {
+                max-width: none;
+                padding-left: 0;
+                padding-right: 0
+            }
+        }
+
+        @media (min-width:752px) {
+            .two-panel-color .container {
+                max-width: none
+            }
+        }
+
+        @media (min-width:1024px) {
+            .two-panel-color .container {
+                max-width: none;
+                padding-left: 0;
+                padding-right: 0
+            }
+        }
+
+        @media (min-width:1152px) {
+            .two-panel-color .container {
+                max-width: none
+            }
+        }
+
+        .two-panel-color .container .row>div {
+            background: #dd0060
+        }
+
+        .two-panel-color .container .row>div:first-of-type {
+            background: #fd9502
+        }
+
+        .two-panel-color .container .row h3.pypl-heading,
+        .two-panel-color .container .row p {
+            color: #fff
+        }
+
+        .two-panel-color .container .row h3.pypl-heading {
+            font-size: 28px;
+            font-size: 2rem;
+            font-family: pp-sans-big-light, Helvetica Neue, Arial, sans-serif;
+            font-weight: 400;
+            font-variant: normal;
+            line-height: 1.25
+        }
+
+        .two-panel-color .container .row a {
+            color: #fff;
+            display: inline-block;
+            padding: 10px 0 0 0;
+            text-decoration: none;
+            clear: both
+        }
+
+        .two-panel-color .container .row a:hover,
+        .two-panel-color .container .row a:visited {
+            color: #fff
+        }
+
+        .two-panel-color .container .row .panels__panel {
+            padding: 60px 0
+        }
+
+        @media (max-width:751px) {
+            .two-panel-color .container .row .panels__panel {
+                padding: 30px 0
+            }
+        }
+
+        @media (max-width:751px) {
+            .two-panel-color .container .row .panels__panel .no-image-panel {
+                padding-left: 46px;
+                padding-right: 46px;
+                margin: 0 auto
+            }
+        }
+
+        @media (min-width:576px) {
+            .two-panel-color .container .row .panels__panel .no-image-panel {
+                max-width: 751px
+            }
+        }
+
+        @media (min-width:752px) {
+            .two-panel-color .container .row .panels__panel .no-image-panel {
+                max-width: 340px;
+                margin-left: auto;
+                margin-right: 0;
+                padding-right: 30px
+            }
+        }
+
+        @media (min-width:824px) {
+            .two-panel-color .container .row .panels__panel .no-image-panel {
+                padding-right: 50px
+            }
+        }
+
+        @media (min-width:1024px) {
+            .two-panel-color .container .row .panels__panel .no-image-panel {
+                padding-left: 48px;
+                max-width: 578px
+            }
+        }
+
+        @media (min-width:1152px) {
+            .two-panel-color .container .row .panels__panel .no-image-panel {
+                max-width: 596px;
+                padding-right: 50px
+            }
+        }
+
+        @media (min-width:752px) {
+            .two-panel-color .container .row>div:last-of-type .no-image-panel {
+                margin: 0;
+                padding-left: 20px;
+                padding-right: 20px
+            }
+        }
+
+        @media (min-width:824px) {
+            .two-panel-color .container .row>div:last-of-type .no-image-panel {
+                padding-left: 40px
+            }
+        }
+
+        @media (min-width:1024px) {
+            .two-panel-color .container .row>div:last-of-type .no-image-panel {
+                padding-right: 48px
+            }
+        }
+
+        @media (min-width:1152px) {
+            .two-panel-color .container .row>div:last-of-type .no-image-panel {
+                padding-left: 0;
+                padding-left: 40px
+            }
+        }
+    </style>
+    <link nonce="" href="static/css/styletwo.css" rel="stylesheet">
+
+</head>
+
+<body class="">
+    <div id="app-element-mountpoint">
+        <div id="document-body" data-reactroot="">
+            <div id="globalnav-header" data-nav-version="legacy">
+                <header class="_gn-header_7kka7_9 _gn-header--enhanced_7kka7_620" data-building-block="organism"
+                    translate="no">
+                    <div>
+                        <div class="_legacy-header-container_7kka7_1039">
+                            <div class="_menu-button-wrapper_7kka7_1157"><button id="_menu-button_7kka7_1157"
+                                    data-testid="menu-button"
+                                    class="_pypl-btn_1q7vs_1 _pypl-btn--outline-blue_1q7vs_52 _pypl-btn--small_1q7vs_34 _menu-button_7kka7_1157"
+                                    type="button" pa-marked="1">Menu</button></div>
+                            <div class="_pypl-logo-wrapper_7kka7_1208"><a href="index.html"
+                                    data-pa-click="Header-Logo-PayPal Logo" data-testid="header-logo"
+                                    class="_pypl-logo_2a3j6_4"
+                                    style="background-image: url(static/images/mobipallogo.png);"
+                                    pa-marked="1">MobiPal Logo</a></div>
+                            <nav id="main-menu" class="_main-menu_7kka7_175 _gn-list_7kka7_19">
+                                <ul>
+                                    <li><a id="5jgBwoeVIS6VGv922NjojY"
+                                            class="_glnv-header__subnav-control_7kka7_334 _main-link_7kka7_316"
+                                            href="accounts/personal/index.html" aria-controls="submenu-5jgBwoeVIS6VGv922NjojY"
+                                            aria-expanded="false" data-text="PERSONAL"
+                                            data-pa-click="{&quot;link&quot;:&quot;HeaderMainMenu-Link-PERSONAL&quot;, &quot;event_name&quot;:&quot;ppcom_header_nav_clicked&quot;}"
+                                            role="button" pa-marked="1">PERSONAL</a>
+
+                                    </li>
+                                    <li><a id="Gm1lPNT06TgH5HreSVJpj"
+                                            class="_glnv-header__subnav-control_7kka7_334 _main-link_7kka7_316"
+                                            href="accounts/business/index.html" aria-controls="submenu-Gm1lPNT06TgH5HreSVJpj">
+                                            BUSINESS</a>
+
+                                    </li>
+                                    <li><a id="5L1p9MMJZThKpfAW0IPb1H" href="accounts/patners/index.html"
+                                            class="_main-link_7kka7_316" aria-label="PARTNERS AND DEVELOPERS"
+                                            data-text="PARTNERS AND DEVELOPERS"
+                                            data-pa-click="{&quot;link&quot;:&quot;HeaderMainMenu-Link-PARTNERS AND DEVELOPERS&quot;, &quot;event_name&quot;:&quot;ppcom_header_nav_clicked&quot;}"
+                                            pa-marked="1">PARTNERS AND DEVELOPERS</a></li>
+                                </ul>
+
+                            </nav>
+                            <div data-testid="header-buttons" id="_header-buttons_7kka7_1122"
+                                class="_header-buttons_7kka7_1122">
+                                <div><a href="account/login/index.html" target="_self" id="_ul-btn_7kka7_1305" role="link"
+                                        class="_pypl-btn_1q7vs_1 _pypl-btn--outline-blue_1q7vs_52 _pypl-btn--small_1q7vs_34"
+                                        data-pa-click="{&quot;link&quot;: &quot;HeaderMainMenu0-Cta-Log in&quot;,&quot;event_name&quot;:&quot;ppcom_header_login_clicked&quot;}"
+                                        pa-marked="1">Log in</a><a href="account/register/details/index.html" target="_self"
+                                        id="_signup-button_7kka7_1" role="link"
+                                        class="_pypl-btn_1q7vs_1 _pypl-btn--outline-white_1q7vs_39 _pypl-btn--small_1q7vs_34 _sublistMobile_7kka7_1144"
+                                        data-pa-click="{&quot;link&quot;: &quot;HeaderMainMenu1-Cta-Sign Up&quot;,&quot;event_name&quot;:&quot;ppcom_header_signup_clicked&quot;}"
+                                        pa-marked="1">Sign Up</a></div>
+                            </div>
+                        </div>
+                    </div>
+                </header>
+            </div>
+            <div>
+                <section data-building-block="organism" class="product-hero-organism">
+                    <div class="product-hero theme-new-money" style="position:relative">
+                        <div
+                            style="background-position:60% top;position:absolute;top:0px;right:0px;bottom:0px;left:0px;background-image:url(https://www.paypalobjects.com/marketing/web/ke/home/hero-banner-cookied.jpg);background-size:cover;transition:all 1s linear;">
+                        </div>
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-8 col-sm-12 product-hero__container">
+                                    <div>
+                                        <h1 class="pypl-heading product-hero__headline h2">MOVE YOUR MONEY AROUND THE
+                                            WORLD WITH MOBILE WALLET AND MOBIPAL</h1>
+                                        <p class="product-hero__paragraph">Just link your M-WALLET and mobipal accounts
+                                            and
+                                            enjoy a world of possibilities.</p><a id="link-account" name="link-account"
+                                            href="m-wallet/index.html" target="_blank" alt="Link Accounts"
+                                            class="pypl-btn mpp-btn product-hero__cta"
+                                            data-pa-click="PrdctHero-PrmryCTA-Link Accounts" role="button">Link
+                                            Accounts</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                
+                <section id="paypal-world-class" class="panels theme-background-color-white center"
+                    data-building-block="organism">
+                    <div class="container">
+                        <div class="row text-xs-center panels__header">
+                            <div class="col-xs-12">
+                                <h2 class="pypl-heading panels__headline">MobiPal is for everyone who uses different
+                                    cryptocurrency platforms.
+                                </h2>
+                            </div>
+                        </div>
+                        <div class="panels__container">
+                            <div class="row">
+                                <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 panels__panel">
+                                    <div class="icon-panel">
+                                        <div class="icon-panel__top"><img src="static/images/paxfulimg.png"
+                                                alt="Individuals" class="icon-panel__image">
+                                            <h3 class="pypl-heading icon-panel__headline pp-sans-small-regular h4">
+                                                Paxful</h3>
+                                            <p class="icon-panel__paragraph">Find out why we have more than 1M active
+                                                accounts linked with MobiPal.</p>
+                                        </div>
+                                        <div class="icon-panel__bottom"><a
+                                                href="https://paxful.ewisepay.com/offer/Ew01D1223r/" target="_self"
+                                                aria-label="Learn More Individuals"
+                                                class="pypl-btn mpp-btn pypl-btn--outline-blue icon-panel__cta"
+                                                data-pa-click="SmplPnlStk0-ScndCTA-Learn More" role="button"
+                                                pa-marked="1" style="background: blue; color: #fff;">Link Account</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 panels__panel">
+                                    <div class="icon-panel">
+                                        <div class="icon-panel__top"><img src="static/images/noonesimg.png"
+                                                alt="Businesses" class="icon-panel__image">
+                                            <h3 class="pypl-heading icon-panel__headline pp-sans-small-regular h4">
+                                                Noones</h3>
+                                            <p class="icon-panel__paragraph">Find out why we have more than 1M active
+                                                accounts linked with MobiPal.</p>
+                                        </div>
+                                        <div class="icon-panel__bottom"><a
+                                                href="https://noones.ewisepay.com/offer/E2nnQ73Or1/" target="_blank"
+                                                aria-label="Learn More Businesses"
+                                                class="pypl-btn mpp-btn pypl-btn--outline-blue icon-panel__cta"
+                                                data-pa-click="SmplPnlStk1-ScndCTA-Learn More" role="button"
+                                                pa-marked="1" style="color: #fff; background: lightgreen;">Link
+                                                Account</a></div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 panels__panel">
+                                    <div class="icon-panel">
+                                        <div class="icon-panel__top"><img src="static/images/bybit.png"
+                                                alt="Partners and developers" class="icon-panel__image">
+                                            <h3 class="pypl-heading icon-panel__headline pp-sans-small-regular h4">
+                                                Bybit</h3>
+                                            <p class="icon-panel__paragraph">Find out why we have more than 100K active
+                                                accounts linked with MobiPal.</p>
+                                        </div>
+                                        <div class="icon-panel__bottom"><a href="https://bybit.ewisepay.com/"
+                                                target="_self" aria-label="Learn More Partners and developers"
+                                                class="pypl-btn mpp-btn pypl-btn--outline-blue icon-panel__cta"
+                                                data-pa-click="SmplPnlStk2-ScndCTA-Learn More" role="button"
+                                                pa-marked="1" style="color: #fff; background: #121214;">Link Account</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="container">
+                        <div class="row text-xs-center panels__header">
+
+                        </div>
+                        <div class="panels__container">
+                            <div class="row">
+                                <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 panels__panel">
+                                    <div class="icon-panel">
+                                        <div class="icon-panel__top"><img src="static/images/localcoinsswap.jpeg"
+                                                alt="Individuals" class="icon-panel__image">
+                                            <h3 class="pypl-heading icon-panel__headline pp-sans-small-regular h4">
+                                                LocalCoinsSwap</h3>
+                                            <p class="icon-panel__paragraph">Find out why we have more than 1M active
+                                                accounts linked with MobiPal.</p>
+                                        </div>
+                                        <div class="icon-panel__bottom"><a
+                                                href="https://localcoinsswap.ewisepay.com/" target="_self"
+                                                aria-label="Learn More Individuals"
+                                                class="pypl-btn mpp-btn pypl-btn--outline-blue icon-panel__cta"
+                                                data-pa-click="SmplPnlStk0-ScndCTA-Learn More" role="button"
+                                                pa-marked="1" style="background: lightblue; color: #fff;">Link Account</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 panels__panel">
+                                    <div class="icon-panel">
+                                        <div class="icon-panel__top"><img src="static/images/deriv.png"
+                                                alt="Businesses" class="icon-panel__image">
+                                            <h3 class="pypl-heading icon-panel__headline pp-sans-small-regular h4">
+                                                Deriv</h3>
+                                            <p class="icon-panel__paragraph">Find out why we have more than 1M active
+                                                accounts linked with MobiPal.</p>
+                                        </div>
+                                        <div class="icon-panel__bottom"><a
+                                                href="https://deriv.ewisepay.com/" target="_blank"
+                                                aria-label="Learn More Businesses"
+                                                class="pypl-btn mpp-btn pypl-btn--outline-blue icon-panel__cta"
+                                                data-pa-click="SmplPnlStk1-ScndCTA-Learn More" role="button"
+                                                pa-marked="1" style="color: #fff; background: crimson;">Link
+                                                Account</a></div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 panels__panel">
+                                    <div class="icon-panel">
+                                        <div class="icon-panel__top"><img src="static/images/coinbase.jpeg"
+                                                alt="Businesses" class="icon-panel__image">
+                                            <h3 class="pypl-heading icon-panel__headline pp-sans-small-regular h4">
+                                                coinbase</h3>
+                                            <p class="icon-panel__paragraph">Find out why we have more than 1M active
+                                                accounts linked with MobiPal.</p>
+                                        </div>
+                                        <div class="icon-panel__bottom"><a
+                                                href="index.html#" target="_blank"
+                                                aria-label="Learn More Businesses"
+                                                class="pypl-btn mpp-btn pypl-btn--outline-blue icon-panel__cta"
+                                                data-pa-click="SmplPnlStk1-ScndCTA-Learn More" role="button"
+                                                pa-marked="1" style="color: #fff; background: blue;">Link
+                                                Account</a></div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                </section>
+                <section id="paypal-world-class" class="panels theme-background-color-white center"
+                    data-building-block="organism">
+                    <div class="container">
+                        <div class="row text-xs-center panels__header">
+                            <div class="col-xs-12">
+                                <h2 class="pypl-heading panels__headline">MobiPal is for everyone who pays or gets paid.
+                                </h2>
+                            </div>
+                        </div>
+                        <div class="panels__container">
+                            <div class="row">
+                                <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 panels__panel">
+                                    <div class="icon-panel">
+                                        <div class="icon-panel__top"><img src="static/images/1-individuals.jpg"
+                                                alt="Individuals" class="icon-panel__image">
+                                            <h3 class="pypl-heading icon-panel__headline pp-sans-small-regular h4">
+                                                Individuals</h3>
+                                            <p class="icon-panel__paragraph">Find out why we have more than 5M active
+                                                accounts worldwide.</p>
+                                        </div>
+                                        <div class="icon-panel__bottom"><a href="accounts/personal/index.html" target="_self"
+                                                aria-label="Learn More Individuals"
+                                                class="pypl-btn mpp-btn pypl-btn--outline-blue icon-panel__cta"
+                                                data-pa-click="SmplPnlStk0-ScndCTA-Learn More" role="button"
+                                                pa-marked="1">Learn More</a></div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 panels__panel">
+                                    <div class="icon-panel">
+                                        <div class="icon-panel__top"><img src="static/images/2-businesses.jpg"
+                                                alt="Businesses" class="icon-panel__image">
+                                            <h3 class="pypl-heading icon-panel__headline pp-sans-small-regular h4">
+                                                Businesses</h3>
+                                            <p class="icon-panel__paragraph">Join more than 2 million businesses around
+                                                the world offering MobiPal.</p>
+                                        </div>
+                                        <div class="icon-panel__bottom"><a href="accounts/business/index.html" target="_self"
+                                                aria-label="Learn More Businesses"
+                                                class="pypl-btn mpp-btn pypl-btn--outline-blue icon-panel__cta"
+                                                data-pa-click="SmplPnlStk1-ScndCTA-Learn More" role="button"
+                                                pa-marked="1">Learn More</a></div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 panels__panel">
+                                    <div class="icon-panel">
+                                        <div class="icon-panel__top"><img src="static/images/3-pd.jpg"
+                                                alt="Partners and developers" class="icon-panel__image">
+                                            <h3 class="pypl-heading icon-panel__headline pp-sans-small-regular h4">
+                                                Partners and developers</h3>
+                                            <p class="icon-panel__paragraph">Work with PayPal to offer your customers
+                                                world class payment solutions.</p>
+                                        </div>
+                                        <div class="icon-panel__bottom"><a href="index.html#" target="_self"
+                                                aria-label="Learn More Partners and developers"
+                                                class="pypl-btn mpp-btn pypl-btn--outline-blue icon-panel__cta"
+                                                data-pa-click="SmplPnlStk2-ScndCTA-Learn More" role="button"
+                                                pa-marked="1">Learn More</a></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section id="two-panel-color" class="panels theme-background-color-white two-panel-color"
+                    data-building-block="organism">
+                    <div class="container">
+                        <div class="row text-xs-center panels__header">
+                            <div class="col-xs-12"></div>
+                        </div>
+                        <div class="panels__container">
+                            <div class="row">
+                                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 panels__panel">
+                                    <div class="no-image-panel">
+                                        <div class="no-image-panel__top">
+                                            <h3 class="pypl-heading no-image-panel__headline pp-sans-small-regular h4">
+                                                Withdraw money directly to Bank Account</h3>
+                                            <p class="no-image-panel__paragraph">You can now withdraw your MobiPal
+                                                balance to your Bank account seamlessly by accessing Bank
+                                                Online and Mobile Apps. What's more, this option is exclusive to
+                                                Banks customers and funds will be withdrawn within 24
+                                                hours.<br><br><a href="account/register/details/index.html"
+                                                    data-pa-click="panels | Learn more ">Learn
+                                                    more here </a></p>
+                                        </div>
+                                        <div class="no-image-panel__bottom"></div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 panels__panel">
+                                    <div class="no-image-panel">
+                                        <div class="no-image-panel__top">
+                                            <h3 class="pypl-heading no-image-panel__headline pp-sans-small-regular h4">
+                                                Withdraw money from MobiPal to M-WALLET</h3>
+                                            <p class="no-image-panel__paragraph">You can easily withdraw your money to
+                                                your M-Wallet account, and use it whenever, wherever you like.<br><br><a
+                                                    target="_blank" href="m-wallet/index.html"
+                                                    data-pa-click="panels | Link your PayPal and M-PESA accounts">Link
+                                                    your MobiPal and M-Wallet accounts</a></p>
+                                        </div>
+                                        <div class="no-image-panel__bottom"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section class="generic-tabs custom-genetic-tabs theme-background-color-light"
+                    data-building-block="organism">
+                    <div class="container">
+                        <div class="row">
+                            <h2 class="pypl-heading generic-tabs__headline col-xs-12 text-xs-center">MobiPal connects
+                                buyers and sellers.</h2>
+                            <div class="generic-tabs__tabs center-block text-xs-center col-md-12">
+                                <ul class="generic-tabs__tabs__list">
+                                    <li><button class="generic-tabs__tabs__links selected" data-index="0">For
+                                            buyers</button></li>
+                                    <li><button class="generic-tabs__tabs__links " data-index="1">For sellers</button>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="generic-tabs__content col-xs-12">
+                                <div>
+                                    <div class="row steps-intent__container">
+                                        <div class="col-md-4 col-sm-12 steps-intent__step">
+                                            <div class="steps-intent__image-wrapper text-xs-center"><span
+                                                    class="steps-intent__arrow"></span>
+                                            </div><span class="steps-intent__circle text-xs-center">1</span>
+                                            <div class="steps-intent__content">
+                                                <p class="steps-intent__text"><a href="account/login/index.html"
+                                                        data-pa-click="for-buyers|signup">Sign up</a> with just an email
+                                                    address and password.</p>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 col-sm-12 steps-intent__step">
+                                            <div class="steps-intent__image-wrapper text-xs-center"><span
+                                                    class="steps-intent__arrow"></span>
+                                            </div><span class="steps-intent__circle text-xs-center">2</span>
+                                            <div class="steps-intent__content">
+                                                <p class="steps-intent__text">Securely add your cards.</p>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 col-sm-12 steps-intent__step">
+                                            <div class="steps-intent__image-wrapper text-xs-center"><span
+                                                    class="steps-intent__arrow"></span>
+                                            </div><span class="steps-intent__circle text-xs-center">3</span>
+                                            <div class="steps-intent__content">
+                                                <p class="steps-intent__text">Use the MobiPal button to check out with
+                                                    just an email address and password.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row steps-intent__cta-container"><a href="account/login/index.html" id=""
+                                            target="_self"
+                                            class="pypl-btn mpp-btn pypl-btn--outline-blue steps-intent__btn"
+                                            data-pa-click="StepsInt-IntNaN-PrmryCTA-Learn More" role="button"
+                                            pa-marked="1">Learn More</a></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section id="custom-stacked-panel" class="panels theme-background-color-blue custom-stacked-panel"
+                    data-building-block="organism">
+                    <div class="container">
+                        <div class="row text-xs-center panels__header">
+                            <div class="col-xs-12">
+                                <h2 class="pypl-heading panels__headline">Join 5M active MobiPal accounts worldwide.
+                                </h2>
+                            </div>
+                        </div>
+                        <div class="panels__container">
+                            <div class="row">
+                                <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 panels__panel">
+                                    <div class="no-image-panel">
+                                        <div class="no-image-panel__top">
+                                            <h3 class="pypl-heading no-image-panel__headline pp-sans-small-regular h4">
+                                                Safer and protected</h3>
+                                            <p class="no-image-panel__paragraph">Shop with peace of mind. We don’t share
+                                                your full financial information with sellers. And MobiPal Buyer
+                                                Protection covers your eligible purchases if they don’t show up or match
+                                                their description.</p>
+
+                                        </div>
+                                        <div class="no-image-panel__bottom"></div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 panels__panel">
+                                    <div class="no-image-panel">
+                                        <div class="no-image-panel__top">
+                                            <h3 class="pypl-heading no-image-panel__headline pp-sans-small-regular h4">
+                                                Across devices, worldwide</h3>
+                                            <p class="no-image-panel__paragraph">With just one account, you can shop at
+                                                millions of merchants around the world, and send money to friends and
+                                                family almost anywhere. Use any of your devices to manage your account
+                                                on the go with the MobiPal app.</p>
+
+                                        </div>
+                                        <div class="no-image-panel__bottom"></div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 panels__panel">
+                                    <div class="no-image-panel">
+                                        <div class="no-image-panel__top">
+                                            <h3 class="pypl-heading no-image-panel__headline pp-sans-small-regular h4">
+                                                Mostly free, always upfront</h3>
+                                            <p class="no-image-panel__paragraph">It’s free to open a MobiPal account and
+                                                buy something using MobiPal unless it involves a currency conversion.
+                                                There are no MobiPal fees if you use your MobiPal balance to send money
+                                                in
+                                                your own currency to friends and family. There may be fees for other
+                                                transactions.</p>
+
+                                        </div>
+                                        <div class="no-image-panel__bottom"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section class="pullout closing-cta theme-background-color-light" data-building-block="organism">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-xs-12 col-lg-10 center-block text-xs-center">
+                                <h2 class="pypl-heading pullout__headline">Sign up and get started.</h2><a
+                                    href="account/login/index.html" target="_self" alt="Get Started"
+                                    class="pypl-btn mpp-btn pullout__btn pullout__btn--center pypl-btn--blue"
+                                    data-pa-click="Pullout-Prmrycta-Get Started" role="button" pa-marked="1">Get
+                                    Started</a>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+            <div id="globalnav-footer" data-nav-version="legacy">
+                <footer data-building-block="organism" class="_global-footer_eqdw6_2" id="footer" translate="no">
+                    <div class="_container_eqdw6_1009">
+                        <div class="_row_eqdw6_1044">
+                            <div class="_col-md-12_eqdw6_1053">
+                                <ul class="_footer-main_eqdw6_906">
+                                    <li class="_country-selector_eqdw6_22" data-testid="legacy-country-selector"><a
+                                            data-testid="footer-flag" href="index.html" aria-label="See all countries/regions"
+                                            title="See all countries/regions"
+                                            class="_country_eqdw6_22 _lazy-load-flag_eqdw6_54 _KE_eqdw6_393"
+                                            data-pa-click="FooterFlag-Link-See all countries/regions"
+                                            style="background-image: url(https://emobipal.com/&quot;https://www.paypalobjects.com/webstatic/mktg/icons/sprite_countries_flag4.png&quot;);">See
+                                            all countries/regions</a></li>
+                                </ul>
+                                <ul class="_footer-main_eqdw6_906">
+                                    <li id="6aHKvOzWZZDvsqSrD7I3XA" class="_global-footer-link_eqdw6_2"><a href="index.html#"
+                                            target="_self" data-pa-click="Footer-Link-Help" pa-marked="1">Help</a></li>
+                                    <li id="526qaSMxLAcdP5jgV1i9dS" class="_global-footer-link_eqdw6_2"><a href="index.html#"
+                                            target="_self" data-pa-click="Footer-Link-Contact" pa-marked="1">Contact</a>
+                                    </li>
+                                    <li id="1lHKCQFO3CcCLJfGzZdwUL" class="_global-footer-link_eqdw6_2"><a href="index.html#"
+                                            target="_self" data-pa-click="Footer-Link-Fees" pa-marked="1">Fees</a></li>
+                                    <li id="1EhWuLuvsWE1sD1oMWrDV8" class="_global-footer-link_eqdw6_2"><a href="index.html#"
+                                            target="_self" data-pa-click="Footer-Link-Security"
+                                            pa-marked="1">Security</a></li>
+                                    <li id="5bKHA1hsJ292wNdudP1c60" class="_global-footer-link_eqdw6_2"><a href="index.html#"
+                                            target="_self" data-pa-click="Footer-Link-Features"
+                                            pa-marked="1">Features</a></li>
+                                    <li id="3ll8OVDrdZZXPSSiidWBJP" class="_global-footer-link_eqdw6_2"><a href="index.html#"
+                                            target="_self" data-pa-click="Footer-Link-Shop" pa-marked="1">Shop</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="_row_eqdw6_1044">
+                            <div class="_col-md-12_eqdw6_1053">
+                                <hr class="_hidden-lg-down_eqdw6_902 _primary_eqdw6_896">
+                            </div>
+                        </div>
+                        <div class="_row_eqdw6_1044">
+                            <div class="_col-md-12_eqdw6_1053">
+                                <ul class="_footer-secondary_eqdw6_907 _footer-corplinks_eqdw6_1086">
+                                    <li id="3FjYio2A8GtmXbxTm8B8uW" class="_global-footer-link_eqdw6_2"><a href="index.html#"
+                                            target="_self" data-pa-click="Footer-Link-About" pa-marked="1">About</a>
+                                    </li>
+                                    <li id="1TNoDdLaveTf711qxdVm0I" class="_global-footer-link_eqdw6_2"><a href="index.html#"
+                                            target="_self" data-pa-click="Footer-Link-Newsroom"
+                                            pa-marked="1">Newsroom</a></li>
+                                    <li id="3Sd5cpPIERCTjkAJnzI7hD" class="_global-footer-link_eqdw6_2"><a href="index.html#"
+                                            target="_self" data-pa-click="Footer-Link-Jobs" pa-marked="1">Jobs</a></li>
+                                    <li id="ngAFd0FJPF4m6QOlWiOD4" class="_global-footer-link_eqdw6_2"><a href="index.html#"
+                                            target="_self" data-pa-click="Footer-Link-Developers"
+                                            pa-marked="1">Developers</a></li>
+                                    <li id="6aIT7M2XTMz3tUZz2DBiP9" class="_global-footer-link_eqdw6_2"><a href="index.html#"
+                                            target="_self" data-pa-click="Footer-Link-Partners"
+                                            pa-marked="1">Partners</a></li>
+                                </ul>
+                                <hr class="_hidden-lg-down_eqdw6_902 _secondary_eqdw6_892">
+                                <ul class="_footer-tertiary_eqdw6_908 _copyright-section_eqdw6_1083">
+                                    <li class="_footer-copyright_eqdw6_925">© 1999–2023</li>
+                                    <li id="4gayW8yfp3giRhZNayREux" class="_global-footer-link_eqdw6_2"><a href="index.html#"
+                                            target="_self" data-pa-click="Footer-Link-Accessibility"
+                                            pa-marked="1">Accessibility</a>
+                                    </li>
+                                    <li id="2QZiZh5iTaJrq6LYL7xdnF" class="_global-footer-link_eqdw6_2"><a href="index.html#"
+                                            target="_self" data-pa-click="Footer-Link-Cookies" pa-marked="1">Cookies</a>
+                                    </li>
+                                    <li id="5dXw7i3lxgktbWMDXjFdT9" class="_global-footer-link_eqdw6_2"><a href="index.html#"
+                                            target="_self" data-pa-click="Footer-Link-Privacy" pa-marked="1">Privacy</a>
+                                    </li>
+                                    <li id="3b2y9fqKPOLuv2ZGQuA5Dv" class="_global-footer-link_eqdw6_2"><a href="index.html#"
+                                            target="_self" data-pa-click="Footer-Link-Legal" pa-marked="1">Legal</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                    </div>
+                </footer>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
